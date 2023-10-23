@@ -1,18 +1,13 @@
 const express = require('express');
 const path = require('path')
+const { home, contactus, success } = require('../controllers/shop');
 
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../', 'views', 'home.html'));
-});
+router.route('/').get(home);
 
-router.get('/contactus', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../', 'views', 'contact.html'));
-});
+router.route('/contactus').get(contactus);
 
-router.post('/success', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../', 'views', 'success.html'));
-});
+router.route('/success').post(success);
 
 module.exports = router;
